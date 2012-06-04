@@ -88,13 +88,13 @@ At any point you can send a user through the purchase process, by passing the re
 	});
 
 ##FYI
-When you issue a purchase call, gumroad-onetime creates a gumroad URL with tha path you requested and a unique token (uuid v4.) and whatever title, price and description you selected.
+When you issue a purchase call, gumroad-onetime creates a gumroad URL with the path you requested (ie: "/buy") and a unique token (uuid v4.) and whatever title, price and description you selected for your link.
 
-The user request is then responded to with a `302` redirect, and any session data you need stored (username, what they're buying etc) is stored in redis. 
+The user request is then responded to with a `302` redirect to Gumroad, and any session data you need stored (username, what they're buying etc) is stored in redis. 
 
-When the user has completed the purchase, gumroad will give them the url wichi will be `http://<your host>/<gumroad-onetime path>?token=<uuid>`, which the middleware then intercepts, validates against the redis store and fires your onPurchase callback, with the session data you asked to be stored, allowing you to then update the users profile/inventory/credits/etc as required. 
+When the user has completed the purchase, gumroad will give them the url which will be `http://<your host>/<gumroad-onetime path>?token=<uuid>`, which the middleware then intercepts, validates against the redis store and fires your onPurchase callback, with the session data you asked to be stored, allowing you to then update the users profile/inventory/credits/etc as required. 
 
-And then gumroad URL is then removed so no further purchases can be made on that url.
+The gumroad URL is then removed, so no further purchases can be made on that url.
 
 
 
