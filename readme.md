@@ -87,7 +87,7 @@ At any point you can send a user through the purchase process, by passing the re
 		}
 	});
 
-##FYI
+##The process explained
 When you issue a purchase call, gumroad-onetime creates a gumroad URL with the path you requested (ie: "/buy") and a unique token (uuid v4.) and whatever title, price and description you selected for your link.
 
 The user request is then responded to with a `302` redirect to Gumroad, and any session data you need stored (username, what they're buying etc) is stored in redis. 
@@ -96,6 +96,22 @@ When the user has completed the purchase, gumroad will give them the url which w
 
 The gumroad URL is then removed, so no further purchases can be made on that url.
 
+##Redis
+
+Currently gumroad-onetime just connects the the default redis instance at localhost:6379 but this will be configurable in the next update.
+
+
+#License
+
+Copyright (C) 2012 Christopher de Beer
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+by [@christopherdb](http://twitter.com/christopherdb)
 
 
 
