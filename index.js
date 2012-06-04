@@ -37,7 +37,7 @@ var onetime = {
 		http.createServer(function (req, res) {
 			onetime.middleware(req, res, function(req, res){
 				if (url.parse(req.url).pathname === '/buyCredits') {
-					onetime.purchase(req, res, {test: "meeee", sessionData: "from redis", win: true}, function(err, data) {
+					onetime.purchase(req, res, {test: "meeee", sessionData: "from redis", win: true},{name: "test", price: 1, desc: "about the purchase"}, function(err, data) {
 						if (err) {
 							res.writeHead(500, {'Content-Type': 'text/html'});
 							res.end('error forwarding user to gumroad');
