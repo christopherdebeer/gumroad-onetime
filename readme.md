@@ -2,6 +2,7 @@
 
 This node package makes handling one-time gumroad urls for managing payments as simple as possible. It uses Redis to store session data and urls, and the [gumroad API wrapper](https://github.com/vdemedes/node-gumroad) to communicate with gumroad (making temprary link urls and removing them once used/purchased).
 
+[More detailed description of the process](#FYI)
 
 ##Install
 
@@ -85,6 +86,9 @@ At any point you can send a user through the purchase process, by passing the re
 			res.end('Purchase successful.');
 		}
 	});
+
+##FYI
+When you issue a purchase call, gumroad-onetime creates a gumroad URL with tha path you requested and a unique token (uuid v4.) and whatever title, price and description you selected, The user request is then responded to with a `302` redirect, and any session data you need stored (username, what they're buying etc) is stored in redis. When the user has completed the purchase, gumroad will give them the url wichi will be `http://<your host>/<gumroad-onetime path>?token=<uuid>`, which the middleware then intercepts, validates against the redis store and fires your onPurchase callback, with the session data you asked to be stored, allowing you to then update the users profile/inventory/credits/etc as required.
 
 
 
