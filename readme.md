@@ -2,7 +2,7 @@
 
 This node package makes handling one-time gumroad urls for managing payments as simple as possible. It uses Redis to store session data and urls, and the [gumroad API wrapper](https://github.com/vdemedes/node-gumroad) to communicate with gumroad (making temprary link urls and removing them once used/purchased).
 
-[More detailed description of the process](#fyi)
+[More detailed description of the process](#the-process-explained)
 
 ##Install
 
@@ -98,7 +98,7 @@ The gumroad URL is then removed, so no further purchases can be made on that url
 
 ##Redis
 
-Currently gumroad-onetime just connects the the default redis instance at localhost:6379 but this will be configurable in the next update.
+Currently gumroad-onetime just connects the the default redis instance at `localhost:6379` but this will be configurable in the next update.
 
 
 #License
