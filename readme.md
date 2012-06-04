@@ -85,12 +85,8 @@ var link = {
 }
 
 gr.purchase(req, res, userData, link, function(err, data) {
-	if (err) {
-		console.log("Error completing purchase.")
-	} else {
-		res.writeHead(500, {'Content-Type': 'text/html'});
-		res.end('Purchase successful.');
-	}
+	if (err) console.log("Error forwarding user to gumroad for purchase.");
+	else console.log("Great success, user shoudl be at gumroad busy paying.");
 });
 ```
 
