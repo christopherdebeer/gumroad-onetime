@@ -46,7 +46,8 @@ http.createServer(function (req, res) {
 		// etc
 	});
 	
-}).listen(80);```
+}).listen(80);
+```
 
 The middleware also allows you to add it seemlessly to `Express` or `Connect` apps, and any other frameworks that follow the same pattern.
 
@@ -90,7 +91,8 @@ gr.purchase(req, res, userData, link, function(err, data) {
 		res.writeHead(500, {'Content-Type': 'text/html'});
 		res.end('Purchase successful.');
 	}
-});```
+});
+```
 
 ##The process explained
 When you issue a purchase call, gumroad-onetime creates a gumroad URL with the path you requested (ie: "/buy") and a unique token (uuid v4.) and whatever title, price and description you selected for your link.
