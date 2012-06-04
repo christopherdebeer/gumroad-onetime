@@ -1,6 +1,6 @@
 #Gumroad-Onetime
 
-This node package makes handling one-time gumroad urls for managing payments as simple as possible. Uses Redis to store session data and urls, and the gumroad API wrapper to comminicate with cumroad (maing urls and removing them once used).
+This node package makes handling one-time gumroad urls for managing payments as simple as possible. It uses Redis to store session data and urls, and the [gumroad API wrapper](https://github.com/vdemedes/node-gumroad) to communicate with gumroad (making temprary link urls and removing them once used/purchased).
 
 
 ##Install
@@ -33,7 +33,7 @@ Setup your client:
 
 ###Middleware
 
-Middleware follows the connect style `function(req, res, next){}` so can either be added to a standard http server, where the middleware will check if it needs to handle the request and if not, passesit to the rest of your app/routes.
+Middleware follows the connect style `function(req, res, next){}` so can either be added to a standard http server, where the middleware will check if it needs to handle the request and if not, passes it to the rest of your app/routes.
 
 	http.createServer(function (req, res) {
 		gr.middleware(req, res, function(req, res){
