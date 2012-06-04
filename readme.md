@@ -8,7 +8,7 @@ This node package makes handling one-time gumroad urls for managing payments as 
 
 `npm install gumroad-onetime`
 
-##Usage
+##Setup
 
 Setup your client:
 
@@ -54,7 +54,7 @@ The middleware also allows you to add it seemlessly to `Express` or `Connect` ap
 	    app.use(express.methodOverride());
 	    app.use(express.bodyParser());
 
-	    app.use(gr.middleware); // Insert Gumroad-onetime middleware:
+	    app.use(gr.middleware); // Insert Gumroad-onetime middleware
 
 	    app.use(app.router);
 	});
