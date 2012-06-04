@@ -59,7 +59,8 @@ app.configure(function(){
     app.use(express.methodOverride());
     app.use(express.bodyParser());
 
-    app.use(gr.middleware); // Insert Gumroad-onetime middleware
+    // Insert gumroad-onetime middleware
+    app.use(gr.middleware); 
 
     app.use(app.router);
 });
@@ -86,7 +87,7 @@ var link = {
 
 gr.purchase(req, res, userData, link, function(err, data) {
 	if (err) console.log("Error forwarding user to gumroad for purchase.");
-	else console.log("Great success, user shoudl be at gumroad busy paying.");
+	else console.log("Great success! User should be at gumroad busy paying.");
 });
 ```
 
