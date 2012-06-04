@@ -1,0 +1,22 @@
+{
+  "author": "Christopher de Beer <christopherdebeer@gmail.com> (http://christopherdebeer.com)",
+  "name": "gumroad-onetime",
+  "description": "One time payment url handling for gumroad payment gateway",
+  "version": "0.0.1",
+  "homepage": "http://github.com/christopherdebeer/gumroad-onetime",
+  "repository": {
+    "url": ""
+  },
+  "main": "index.js",
+  "engines": {
+    "node": "~0.6.7"
+  },
+  "dependencies": {
+    "gumroad": "~0.9.4",
+    "redis": "~0.7.2",
+    "underscore": "~1.3.3",
+    "qs": "~0.5.0",
+    "node-uuid": "~1.3.3"
+  },
+  "devDependencies": {}
+}
