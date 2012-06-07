@@ -3,7 +3,7 @@
   "name": "gumroad-onetime",
   "description": "One time payment url handling middleware for gumroad payment gateway links",
   "keywords": ["gumroad", "url", "middleware", "payment", "purchase" ],
-  "version": "0.0.4-333",
+  "version": "0.0.4-4",
   "homepage": "http://github.com/christopherdebeer/gumroad-onetime",
   "repository": {
     "type": "git",
