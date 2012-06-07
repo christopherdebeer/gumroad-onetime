@@ -30,7 +30,7 @@ var config = {
 
 var onetime = {
 
-	debug: false;
+	debug: true,
 
 	demo: function(){
 
@@ -54,33 +54,39 @@ var onetime = {
 
 		onetime.createClient();
 	},  
-
+	getMiddleware: function(){
+		return onetime.middleware;
+	},
 	middleware: function(req, res, next){
+
+		
 		var path = url.parse(req.url).pathname,
 			query = qs.parse(url.parse(req.url).query);
 
 		if (path === config.options.path && typeof query.token !== 'undefined') {
 
 			var token = query.token;
-			if (onetime.debug)console.log("onetime activated for: ", path, query);
-			rClient.get(config.prefix + token, function(err,result) {
+			if (onetime.debug) console.log("onetime activated for: ", path, query);
+			rClient.get(config.prefix + token, function(err, result) {
 				if (err || !result || result === "used") next(req,res);
 				else {
 					var data = JSON.parse(result);
-					if (onetime.debug)console.log("token was valid and in redis, ", data)
+					if (onetime.debug) console.log("token was valid and in redis, ", data)
 					onetime.client.deleteLink(data.id, function(){
 						if (!err) rClient.set(config.prefix + token, "used");
 					})
-					if (onetime.debug)console.log("session data from redis: ", data.session)
+					if (onetime.debug) console.log("session data from redis: ", data.session)
 					config.options.onPurchase(req, res, data.session);
 				}
 			});
 			
 
 		} else {
-			if (onetime.debug)console.log("no onetime passing to next()");
-			next(req, res);
+			if (onetime.debug) console.log("no onetime passing to next()");
+			next();
+
 		}
+		
 	},
 	createClient: function(options, cb){
 
@@ -142,7 +148,8 @@ if (module.parent) {
 	module.exports = {
 		setup: onetime.createClient,
 		purchase: onetime.purchase,
-		middleware: onetime.middleware
+		middleware: onetime.middleware,
+		getMiddleware: onetime.getMiddleware,
 	};
 } else {
 	if (onetime.debug) console.log('Creating standalone onetime server...')
